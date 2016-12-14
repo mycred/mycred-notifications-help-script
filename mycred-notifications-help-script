@@ -1,0 +1,23 @@
+/**
+ * Notifications Help Script
+ * For troubleshooting myCRED Notification issues.
+ * Will not work with the premium version!
+ * @version 1.0
+ */
+function mycred_pro_notificatins_help_script( $notifications = array() ) {
+
+	// There are already messages so no need to add a new one
+	if ( ! empty( $notifications ) ) return $notifications;
+
+	// The user that should always see this message
+	// Change this to the user ID you will be testing with
+	$recipient_id = 1;
+
+	// Insert message for this user
+	if ( get_current_user_id() == $recipient_id )
+		return array( '<h1>1 Point</h1><p>Test Notification</p>' );
+
+	 return $notifications;
+
+}
+add_filter( 'mycred_notifications', 'mycred_pro_notificatins_help_script' );
